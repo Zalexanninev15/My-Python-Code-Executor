@@ -1,4 +1,4 @@
-# My Python Code Executor | 🔥[Run](https://zalexanninev15.github.io/My-Python-Code-Executor)
+# My Python Code Executor | 🔥[Run](https://zalexanninev15.github.io/My-Python-Code-Executor/index.html)
 
 [![](https://img.shields.io/badge/platforms-All_with_Internet-27282D.svg)](https://github.com/Zalexanninev15/My-Python-Code-Executor)
 [![](https://img.shields.io/badge/written_on-HTML-E34F26.svg?logo=html5)](https://github.com/Zalexanninev15/My-Python-Code-Executor)

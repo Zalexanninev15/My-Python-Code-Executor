@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>My Python Code Executor v1.0 by Zalexanninev15</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/pyodide/v0.20.0/full/pyodide.js"></script>
+</head>
+
+<body>
+    <center>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+        <br />
+        <div class="mb-3">
+            <label for="code" class="form-label">My Python Code Executor v1.0 by Zalexanninev15</br>You can execute any Python code. Just enter something in the box below and click the button.</label>
+            <input class="form-control" id="code" value="sum([1, 2, 3, 4, 5])" placeholder="Simple Python Code" style="width: 60%;height: 100%;" />
+        </div>
+        <button type="button" class="btn btn-primary" onclick="evaluatePython()">Run this code</button>
+        <br />
+        <br />
+        <div class="mb-3">
+            <label for="output" class="form-label">Output</label>
+            <textarea class="form-control form-control-sm" id="output" placeholder=".form-control-sm" style="width: 60%;height: 100%;" rows="10" readonly></textarea>
+        </div>
+
+        <script>
+            const output = document.getElementById("output");
+            const code = document.getElementById("code");
+
+            function addToOutput(s) {
+                output.value += "> " + code.value + "\n" + s + "\n";
+            }
+
+            output.value = "Initializing...\n";
+            async function main() {
+                let pyodide = await loadPyodide();
+                output.value += "Ready! Write code in the textbox ☝️\n";
+                return pyodide;
+            }
+            let pyodideReadyPromise = main();
+
+            async function evaluatePython() {
+                let pyodide = await pyodideReadyPromise;
+                try {
+                    let output = pyodide.runPython(code.value);
+                    addToOutput(output);
+                } catch (err) {
+                    addToOutput(err);
+                }
+            }
+        </script>
+    </center>
+</body>
+
+</html>
